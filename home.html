@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        
+        .header {
+            padding: 30px;
+            text-align: center;
+            background: powderblue;
+            color: rgb(255, 255, 255);
+            font-size: 30px;
+            font-family: sans-serif;
+            
+          }
+        #body {
+            padding: 25px;
+            background-color: rgb(179, 245, 234);
+            height: 508px;
+        }
+        #first_box{
+            padding-left: 13px;
+            padding-top: 10px;
+            height: 150px;
+            width: 200px;
+            float: right;
+            background-color: powderblue;
+            margin-right: 120px;
+            margin-top: 140px;
+
+            box-shadow:
+            rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
+            rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
+            
+            
+        } 
+        table {
+            border-collapse: separate;
+            border-spacing: 0 15px;
+          }
+          #heading_moving{
+            font-family: sans-serif;
+            color: blue;
+          }
+          #map{
+            float: left;
+            padding-left: 100px;
+            margin-top: 30px;
+            
+            box-shadow:
+                2em 4em 6em -2em rgba(0,0,0,.5),
+                1em 2em 3.5em -2.5em rgba(0,0,0,.5);
+          } 
+        
+         
+
+    </style>
+    <script type="text/javascript"  src="https://www.google.com/jsapi">
+
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI</title>
+</head>
+<body>
+    <div class="header">
+        <h3>Central Control Room for Air Quality Management - All India</h3>
+    </div>
+    <div id="body">
+        <marquee><h2 id="heading_moving">CONTINUOUS PREDICTION OF AIR QUALITY INDEX OF INDIA</h2></marquee>
+        <main id="main">
+            <div id="map" class="child">
+                  <div id="visualization"></div>
+    
+            </div>
+            <script>
+                google.load('visualization', '1', {'packages':['geochart']});
+                google.setOnLoadCallback(drawVisualization);
+    
+                function drawVisualization()
+                {
+                    var data=google.visualization.arrayToDataTable([
+                    
+                    ['State Code', 'State', 'AQI PM2.5'],
+                    ['IN-UP', 'Uttar Pradesh', 780],
+                    ['IN-MH', 'Maharashtra', 966],
+                    ['IN-BR', 'Bihar', 974],
+                    ['IN-WB', 'West Bengal', 590],
+                    ['IN-MP', 'Madhya Pradesh',765 ],
+                    ['IN-TN', 'Tamilnadu', 656],
+                    ['IN-RJ', 'Rajsthan', 500],
+                    ['IN-KA', 'Karnataka', 500],
+                    ['IN-GJ', 'Gujrat', 1362],
+                    ['IN-AP', 'Andhra Pradesh', 466],
+                    ['IN-OR', 'Orissa', 1100],
+                    ['IN-TG', 'Telangana', 1008],
+                    ['IN-KL', 'Kerala', 987],
+                    ['IN-JH', 'Jharkhand', 1290],
+                    ['IN-AS', 'Assam', 842],
+                    ['IN-PB', 'Punjab', 1064],
+                    ['IN-CT', 'Chhattishgarh', 1342],
+                    ['IN-HR', 'Haryana', 745],
+                    ['IN-JK', 'Jammu and Kashmir', 1176],
+                    ['IN-UT', 'Uttarakhand', 500],
+                    ['IN-HP', 'Himanchal Pradesh', 500],
+                    ['IN-TR', 'Tripura', 500],
+                    ['IN-ML', 'Meghalya', 1322],
+                    ['IN-MN', 'Manipur', 500],
+                    ['IN-NL', 'Nagaland', 1224],
+                    ['IN-GA', 'Goa', 500],
+                    ['IN-AR', 'Arunachal Pradesh', 1178],
+                    ['IN-MZ', 'Mizoram', 500],
+                    ['IN-SK', 'Sikkim', 500],
+                    ['IN-DL', 'Delhi', 500],
+                    ['IN-PY', 'Puducherry', 500],
+                    ['IN-CH', 'Chandigarh', 500],
+                    ['IN-AN', 'Andaman and Nicobar Island', 1167],
+                    ['IN-DN', 'Dadar and Nagar Haveli', 500],
+                    ['IN-DD', 'Daman and Diu', 500],
+                    ['IN-LD', 'Lakshadweep', 1143],
+    
+                    ]);
+    
+                    var opts={
+                        region:'IN',
+                        domain:'IN',
+                        displayMode:'regions',
+                        colorAxis:{color:['#008000', '#FFFF00', '#0000FF']},
+                        resolution:'provinces',
+                        backgroundColor:'#81d4fa',
+                        defaultColor:'#f5f5f5',
+                        width:500,
+                        height:400,
+                    };
+    
+    
+                    var geochart=new google.visualization.GeoChart(
+                     
+                       document.getElementById('visualization')
+                       );
+                       geochart.draw(data, opts);
+                };   
+    
+            </script>
+        </main>
+        <div id="first_box" class="child">
+            <table>
+                <tr>
+                    <td><a style="text-decoration: none" href="https://www.airnow.gov/aqi/aqi-basics/#:~:text=Think%20of%20the%20AQI%20as,300%20represents%20hazardous%20air%20quality.">Advance Search</a></td>
+                </tr>
+                <tr>
+                    <td><a style="text-decoration: none" href="index.html">City Wise Analysis</a></td>
+                </tr>
+                <tr>
+                    <td><a style="text-decoration: none" href="https://www.ncdc.gov.in/cpcbaqi.php">Data Availability</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+      
+</body>
+</html>
